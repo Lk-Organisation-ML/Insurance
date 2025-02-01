@@ -1,152 +1,57 @@
 # Insurance
-# Analyse de Données et Prédiction (
+## Analyse de Données et Prédiction
 
+Analyse des données et prédiction des charges d'assurance d'un client d'une société d'assurance-vie en fonction de différents paramètres tels que l'âge, le nombre d'enfants à charge, l'IMC, le statut de fumeur, la région de résidence, etc.
 
-analyse des données et prédiction des charges d'assurance de client d'une société assurance vie en fonction de l'âge , le nombre d'enfant , le bim et d'autre paramètres telle que le fait qu'il soient non fumeur ou pas etc...
+## 1. Chargement et Compréhension du Dataset
 
-## Chargement et comprehension du Dataset
+Le dataset <a href="Data\Insurance-data.xlsx">Insurance-data.xlsx</a> contient **1000 lignes (observations)** et **7 colonnes (variables)**.
 
-le dataet <a href="Data\Insurance-data.xlsx">Insurance-data.xlsx</a> contient 1000 ligne(observation) & 7 colonnes (variables)
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>sex</th>
-      <th>bmi</th>
-      <th>children</th>
-      <th>smoker</th>
-      <th>region</th>
-      <th>charges</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>19</td>
-      <td>female</td>
-      <td>27.900</td>
-      <td>0</td>
-      <td>yes</td>
-      <td>southwest</td>
-      <td>16884.92400</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>18</td>
-      <td>male</td>
-      <td>33.770</td>
-      <td>1</td>
-      <td>no</td>
-      <td>southeast</td>
-      <td>1725.55230</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>28</td>
-      <td>male</td>
-      <td>33.000</td>
-      <td>3</td>
-      <td>no</td>
-      <td>southeast</td>
-      <td>4449.46200</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>33</td>
-      <td>male</td>
-      <td>22.705</td>
-      <td>0</td>
-      <td>no</td>
-      <td>northwest</td>
-      <td>21984.47061</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>32</td>
-      <td>male</td>
-      <td>28.880</td>
-      <td>0</td>
-      <td>no</td>
-      <td>northwest</td>
-      <td>3866.85520</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>995</th>
-      <td>39</td>
-      <td>female</td>
-      <td>23.275</td>
-      <td>3</td>
-      <td>no</td>
-      <td>northeast</td>
-      <td>7986.47525</td>
-    </tr>
-    <tr>
-      <th>996</th>
-      <td>39</td>
-      <td>female</td>
-      <td>34.100</td>
-      <td>3</td>
-      <td>no</td>
-      <td>southwest</td>
-      <td>7418.52200</td>
-    </tr>
-    <tr>
-      <th>997</th>
-      <td>63</td>
-      <td>female</td>
-      <td>36.850</td>
-      <td>0</td>
-      <td>no</td>
-      <td>southeast</td>
-      <td>13887.96850</td>
-    </tr>
-    <tr>
-      <th>998</th>
-      <td>33</td>
-      <td>female</td>
-      <td>36.290</td>
-      <td>3</td>
-      <td>no</td>
-      <td>northeast</td>
-      <td>6551.75010</td>
-    </tr>
-    <tr>
-      <th>999</th>
-      <td>61</td>
-      <td>female</td>
-      <td>29.070</td>
-      <td>0</td>
-      <td>yes</td>
-      <td>northwest</td>
-      <td>29141.36030</td>
-    </tr>
-  </tbody>
-</table>
-<p>1000 rows × 7 columns</p>
-</div>
-Le dataset  Fournie des informations essentielles pour comprendre les profils des assurés et les facteurs influençant les coûts des assurances santé.
-age : âge de l'individu
-sex : sexe de l'individu
-bmi : indice de masse corporelle (IMC)
-children : nombre d'enfants à charge
-smoker : statut de fumeur
-region : région de résidence
-charges : coûts médicaux facturés
+### Description des variables
+- **age** : Âge de l'individu
+- **sex** : Sexe de l'individu
+- **bmi** : Indice de masse corporelle (IMC)
+- **children** : Nombre d'enfants à charge
+- **smoker** : Statut de fumeur (yes/no)
+- **region** : Région de résidence
+- **charges** : Coûts médicaux facturés
 
-## Prétraitement 
+Le dataset fournit des informations essentielles pour comprendre les profils des assurés et les facteurs influençant les coûts des assurances santé.
 
-## Modèle
+## 2. Prétraitement des Données
 
+Avant d'appliquer un modèle de prédiction, il est nécessaire de préparer les données correctement :
 
+1. **Vérification des valeurs manquantes** :
+   - Identifier et traiter les valeurs nulles s'il y en a.
+
+2. **Encodage des variables catégoriques** :
+   - Conversion des variables qualitatives (*sex, smoker, region*) en variables numériques (ex. : encodage one-hot ou label encoding).
+
+3. **Normalisation des données** :
+   - Mise à l'échelle des variables continues (*age, bmi, children, charges*) pour éviter des disparités entre les valeurs.
+
+4. **Division du dataset** :
+   - Séparation des données en ensemble d'entraînement (80%) et ensemble de test (20%).
+
+## 3. Modélisation avec KNN
+
+Nous utilisons le modèle des k-plus proches voisins (*K-Nearest Neighbors, KNN*) pour prédire les charges d'assurance.
+
+### Choix du Modèle
+- Le KNN est un modèle non paramétrique basé sur la proximité des données.
+- Il est essentiel de choisir une bonne valeur de **k** (nombre de voisins) pour optimiser les performances du modèle.
+
+### Étapes de Modélisation
+1. **Sélection des features** : Choix des variables pertinentes pour la prédiction.
+2. **Optimisation de k** : Utilisation d'une validation croisée pour déterminer la meilleure valeur de k.
+3. **Mise en place du modèle** : Entraînement du modèle KNN sur l'ensemble d'entraînement.
+4. **Évaluation du modèle** : Mesure de la performance sur l'ensemble de test (MSE, RMSE, R^2).
+
+### Métriques d'évaluation
+- **Erreur quadratique moyenne (MSE)** : Permet de mesurer la différence moyenne entre les valeurs prédites et les valeurs réelles.
+- **Racine de l'erreur quadratique moyenne (RMSE)** : Évalue la précision globale des prédictions.
+- **Coefficient de détermination (R^2)** : Indique la proportion de variance expliquée par le modèle.
+
+## Conclusion
+Cette analyse nous permet de comprendre les facteurs influençant les charges d'assurance et de prédire celles-ci avec un modèle KNN. L'optimisation du modèle et le choix des paramètres sont essentiels pour garantir de bonnes performances en prédiction.
