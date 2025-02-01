@@ -55,3 +55,12 @@ Nous utilisons le modèle des k-plus proches voisins (*K-Nearest Neighbors, KNN*
 
 ## Conclusion
 Cette analyse nous permet de comprendre les facteurs influençant les charges d'assurance et de prédire celles-ci avec un modèle KNN. L'optimisation du modèle et le choix des paramètres sont essentiels pour garantir de bonnes performances en prédiction.
+
+## Auteur
+👤 **Bryan LEKE**  
+📧 Contact : bryanlkcontact0@gmail.com  
+🔗 GitHub : [github.com/Bryan-lk4]
+
+---
+
+📌 **Note** : Ce projet est réalisé à des fins éducatives pour explorer la prediction en utillisant le KNN , la regression et l'analyse de données.
